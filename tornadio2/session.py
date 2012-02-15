@@ -72,7 +72,7 @@ class Session(sessioncontainer.SessionBase):
     `is_closed`
         Check if session is closed or not.
     """
-    def __init__(self, conn, server, request, expiry=None):
+    def __init__(self, conn, server, request, session_id=None, expiry=None):
         """Session constructor.
 
         `conn`
@@ -85,7 +85,7 @@ class Session(sessioncontainer.SessionBase):
             Session expiry
         """
         # Initialize session
-        super(Session, self).__init__(None, expiry)
+        super(Session, self).__init__(session_id=session_id, expiry=expiry)
 
         self.server = server
         self.send_queue = []

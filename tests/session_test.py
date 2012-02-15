@@ -28,10 +28,11 @@ class DummyServer(object):
         self.stats = stats.StatsCollector()
 
     def create_session(self, handler):
-        return session.Session(self._connection,
-                               self,
-                               handler,
-                               self.settings.get('session_expiry'))
+        return session.Session(conn=self._connection,
+                               server=self,
+                               request=handler,
+                               session_id=None,
+                               expiry=self.settings.get('session_expiry'))
 
 
 class DummyTransport(object):

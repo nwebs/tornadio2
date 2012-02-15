@@ -184,10 +184,11 @@ class TornadioRouter(object):
             parameters and cookies.
         """
         # TODO: Possible optimization here for settings.get
-        s = session.Session(self._connection,
-                            self,
-                            request,
-                            self.settings.get('session_expiry')
+        s = session.Session(conn=self._connection,
+                            server=self,
+                            request=request,
+                            session_id=None,
+                            expiry=self.settings.get('session_expiry')
                             )
 
         self._sessions.add(s)
